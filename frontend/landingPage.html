@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte2Boss - AI-Powered Resume Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradient 8s ease infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    
+    <!-- Hero Section - Full Screen -->
+    <section class="min-h-screen bg-gradient-to-br from-black via-gray-900 to-orange-950 animate-gradient relative overflow-hidden">
+        
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-orange-500 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-orange-600 rounded-full blur-3xl"></div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="relative z-10 px-6 py-6">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="flex items-center -space-x-2">
+                    <img src="logo.png" alt="Byte2Boss Logo" class="h-12 w-12 md:h-16 md:w-16 object-contain">
+                    <div class="text-3xl md:text-4xl font-black bg-gradient-to-r from-orange-500 to-orange-300 bg-clip-text text-transparent leading-none">
+                        Byte2Boss
+                    </div>
+                </div>
+                <a href="#signup" class="hidden md:block bg-gradient-to-r from-orange-600 to-orange-500 text-white px-6 py-3 rounded-full font-bold hover:from-orange-500 hover:to-orange-400 transition-all transform hover:scale-105">
+                    Get Started Free
+                </a>
+            </div>
+        </nav>
+        
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-32">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Left: Headline & CTA -->
+                <div class="text-white fade-in">
+                    <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+                        Turn Your Resume Into Your Next 
+                        <span class="bg-gradient-to-r from-orange-500 to-orange-300 bg-clip-text text-transparent">Job Offer</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-gray-300 leading-relaxed">
+                        Upload your resume, get AI-powered scoring for top tech roles, and receive personalized improvement paths — all in seconds.
+                    </p>
+                    
+                    <!-- Primary CTA -->
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <a href="#signup" class="bg-gradient-to-r from-orange-600 to-orange-500 text-white px-10 py-5 rounded-full text-xl font-bold hover:from-orange-500 hover:to-orange-400 transition-all transform hover:scale-105 shadow-2xl text-center">
+                            Upload Resume Now →
+                        </a>
+                        <a href="#features" class="bg-white/10 backdrop-blur-sm border-2 border-orange-500 text-orange-400 px-10 py-5 rounded-full text-xl font-bold hover:bg-orange-500/20 transition-all text-center">
+                            See How It Works
+                        </a>
+                    </div>
+                    
+                    <!-- Trust Badges -->
+                    <div class="flex items-center gap-6 text-gray-400">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            <span class="font-semibold text-gray-300">Free Analysis</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            <span class="font-semibold text-gray-300">Instant Results</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right: Visual Mockup -->
+                <div class="hidden lg:block float">
+                    <div class="relative">
+                        <!-- Main Card -->
+                        <div class="bg-gradient-to-br from-gray-900 to-black border-2 border-orange-500/30 rounded-3xl shadow-2xl p-8 transform rotate-2">
+                            <div class="space-y-6">
+                                <!-- Header -->
+                                <div class="flex items-center justify-between pb-6 border-b-2 border-orange-500/20">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-white">Resume Score</h3>
+                                        <p class="text-gray-400">Software Developer</p>
+                                    </div>
+                                    <div class="text-5xl font-black bg-gradient-to-r from-orange-500 to-orange-300 bg-clip-text text-transparent">87</div>
+                                </div>
+                                
+                                <!-- Progress Bars -->
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="flex justify-between mb-2">
+                                            <span class="text-sm font-semibold text-gray-300">Technical Skills</span>
+                                            <span class="text-sm font-bold text-orange-500">92%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-800 rounded-full h-3">
+                                            <div class="bg-gradient-to-r from-orange-600 to-orange-400 h-3 rounded-full" style="width: 92%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-2">
+                                            <span class="text-sm font-semibold text-gray-300">Experience</span>
+                                            <span class="text-sm font-bold text-orange-500">85%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-800 rounded-full h-3">
+                                            <div class="bg-gradient-to-r from-orange-600 to-orange-400 h-3 rounded-full" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-2">
+                                            <span class="text-sm font-semibold text-gray-300">Keywords Match</span>
+                                            <span class="text-sm font-bold text-orange-500">78%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-800 rounded-full h-3">
+                                            <div class="bg-gradient-to-r from-orange-600 to-orange-400 h-3 rounded-full" style="width: 78%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute -top-6 -right-6 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-2xl px-6 py-3 shadow-xl transform rotate-6">
+                            <div class="text-2xl font-black">AI Powered</div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Wave Divider -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#000000"/>
+            </svg>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="py-24 px-6 bg-black">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center mb-20">
+                <div class="flex items-center justify-center -space-x-4 mb-6">
+                    <img src="logo.png" alt="Byte2Boss Logo" class="h-[80px] w-[80px] md:h-[120px] md:w-[120px] object-contain">
+                    <h2 class="text-5xl md:text-7xl font-black bg-gradient-to-r from-orange-500 to-orange-300 bg-clip-text text-transparent leading-none">
+                      Byte2Boss
+                    </h2>
+                </div>
+                
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                  Get the competitive edge you need to land your dream tech job
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Feature 1 -->
+                <div class="bg-gradient-to-br from-gray-900 to-black border-2 border-orange-500/30 rounded-2xl p-8 shadow-lg hover:shadow-orange-500/20 hover:shadow-2xl transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">AI-Powered Scoring</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Get instant resume scores tailored for SDE, AI/ML, Cybersecurity, DevOps, and Tester roles using advanced AI analysis.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-gradient-to-br from-gray-900 to-black border-2 border-orange-500/30 rounded-2xl p-8 shadow-lg hover:shadow-orange-500/20 hover:shadow-2xl transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Smart Suggestions</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Receive actionable recommendations to improve your resume and close skill gaps for your target role.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-gradient-to-br from-gray-900 to-black border-2 border-orange-500/30 rounded-2xl p-8 shadow-lg hover:shadow-orange-500/20 hover:shadow-2xl transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Learning Paths</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Get personalized roadmaps with resources to master the skills you need for your dream position.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- Roles Section -->
+    <section class="py-24 px-6 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black text-white mb-4">Specialized for Top Tech Roles</h2>
+                <p class="text-xl text-gray-400">Get role-specific insights tailored to your career goals</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                
+                <div class="bg-gradient-to-br from-gray-900 to-black border-2 border-orange-500/30 rounded-2xl p-6 text-center hover:shadow-orange-500/20 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="text-4xl mb-3">💻</div>
+                    <h3 class="font-bold text-lg text-white">SDE</h3>
+                    <p class="text-sm text-gray-400 mt-1">Software Dev</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-gray-900 to-black border-2 border-orange-500/30 rounded-2xl p-6 text-center hover:shadow-orange-500/20 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="text-4xl mb-3">🤖</div>
+                    <h3 class="font-bold text-lg text-white">AI/ML</h3>
+                    <p class="text-sm text-gray-400 mt-1">Machine Learning</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-gray-900 to-black border-2 border-orange-500/30 rounded-2xl p-6 text-center hover:shadow-orange-500/20 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="text-4xl mb-3">🔒</div>
+                    <h3 class="font-bold text-lg text-white">Security</h3>
+                    <p class="text-sm text-gray-400 mt-1">Cybersecurity</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-gray-900 to-black border-2 border-orange-500/30 rounded-2xl p-6 text-center hover:shadow-orange-500/20 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="text-4xl mb-3">⚙️</div>
+                    <h3 class="font-bold text-lg text-white">DevOps</h3>
+                    <p class="text-sm text-gray-400 mt-1">Infrastructure</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-gray-900 to-black border-2 border-orange-500/30 rounded-2xl p-6 text-center hover:shadow-orange-500/20 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="text-4xl mb-3">✅</div>
+                    <h3 class="font-bold text-lg text-white">QA/Tester</h3>
+                    <p class="text-sm text-gray-400 mt-1">Quality Assurance</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section id="signup" class="py-32 px-6 bg-gradient-to-br from-black via-gray-900 to-orange-950 relative overflow-hidden">
+        
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-orange-600 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-5xl md:text-6xl font-black text-white mb-6">
+                Ready to Land Your Dream Job?
+            </h2>
+            <p class="text-2xl text-gray-300 mb-12">
+                Join thousands who've already transformed their resumes and careers
+            </p>
+            
+            <a href="singup.html" class="inline-block bg-gradient-to-r from-orange-600 to-orange-500 text-white px-12 py-6 rounded-full text-2xl font-black hover:from-orange-500 hover:to-orange-400 transition-all transform hover:scale-110 shadow-2xl">
+                🚀 Upload Resume Now - It's FREE
+            </a>
+            
+            <p class="mt-8 text-gray-400 text-lg">
+                ✓ No credit card required  •  ✓ Instant results  •  ✓ 100% secure
+            </p>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-black text-gray-500 py-12 px-6 border-t border-orange-500/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center -space-x-1 mb-4 md:mb-0">
+                    <img src="logo.png" alt="Byte2Boss Logo" class="w-8 h-8 object-contain">
+                    <div class="text-2xl font-black bg-gradient-to-r from-orange-500 to-orange-300 bg-clip-text text-transparent">Byte2Boss</div>
+                </div>
+                <div class="text-center md:text-right">
+                    <p>© 2025 Byte2Boss. All rights reserved.</p>
+                    <div class="mt-2 space-x-4">
+                        <a href="#" class="hover:text-orange-500 transition-colors">Privacy</a>
+                        <a href="#" class="hover:text-orange-500 transition-colors">Terms</a>
+                        <a href="#" class="hover:text-orange-500 transition-colors">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
