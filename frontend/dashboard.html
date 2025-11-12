@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Byte2Boss | Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #1a1a1a 0%, #0c0c0c 70%);
+      font-family: 'Inter', sans-serif;
+      color: white;
+    }
+
+    .glass {
+      background: rgba(20, 20, 20, 0.8);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(255, 122, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .highlight {
+      color: #ff7a00;
+    }
+
+    .upload-zone {
+      border: 2px dashed #ff7a00;
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .upload-zone:hover {
+      background-color: rgba(255, 122, 0, 0.05);
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="w-full flex justify-between items-center px-8 py-4 bg-[#141414]/80 border-b border-[#2c2c2c] shadow-lg fixed top-0 left-0">
+    <div class="flex items-center space-x-3">
+      <img src="pictures/logo.png" alt="Byte2Boss Logo" class="w-8 h-8" />
+      <h1 class="text-xl font-bold text-orange-400">Byte2Boss</h1>
+    </div>
+    <button id="logoutBtn" class="bg-red-600 hover:bg-red-500 px-4 py-2 rounded-lg font-medium text-sm">
+      Logout
+    </button>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="glass mt-24 p-8 rounded-2xl shadow-lg w-[90%] sm:w-[500px] text-center">
+    <h2 class="text-2xl font-bold mb-2">
+      Welcome, <span id="userName" class="highlight"></span> 👋
+    </h2>    
+    <p class="text-gray-400 mb-6 text-sm">
+      You’re logged in! Upload your resume below to get started.
+    </p>
+
+    <!-- Upload Section -->
+    <form id="resumeForm" class="space-y-4">
+      <div class="upload-zone">
+        <input
+          type="file"
+          id="resume"
+          accept=".pdf,.doc,.docx"
+          class="block w-full text-sm text-gray-300 cursor-pointer file:mr-4 file:rounded-lg file:border-0 file:bg-orange-600 file:text-white hover:file:bg-orange-500 file:px-4 file:py-2"
+        />
+      </div>
+      <button
+        type="submit"
+        class="bg-orange-600 hover:bg-orange-500 w-full py-2 rounded-lg font-semibold transition"
+      >
+        Upload Resume
+      </button>
+    </form>
+
+    <!-- Upload Result -->
+    <p id="result" class="mt-4 text-gray-300 text-sm italic"></p>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-gray-500 text-xs mt-10">
+    © 2025 Byte2Boss. Empowering your career with AI.
+  </footer>
+
+  <!-- Auth Script -->
+  <script src="js/auth.js"></script>
+
+  <script>
+    // === Ensure user is logged in ===
+    requireAuthOrRedirect();
+
+    // === Display username dynamically ===
+    const userData = JSON.parse(localStorage.getItem("user")) || {};
+    const userName = userData.name || "User";
+
+    // FIX: inject text content, not the element object
+    document.getElementById("userName").textContent = userName;
+
+
+    // === Resume Upload ===
+    document.getElementById("resumeForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const file = document.getElementById("resume").files[0];
+      const result = document.getElementById("result");
+
+      if (!file) return alert("Please select a resume file first.");
+
+      const fd = new FormData();
+      fd.append("resume", file);
+
+      try {
+        const res = await postFile(ENDPOINTS.resumeUpload, fd);
+        const data = await res.json();
+
+        if (res.ok) {
+          result.textContent = `✅ Uploaded successfully: ${data.resume || file.name}`;
+          result.className = "mt-4 text-green-400 text-sm italic";
+        } else {
+          result.textContent = data.error || "Upload failed.";
+          result.className = "mt-4 text-red-400 text-sm italic";
+        }
+      } catch (error) {
+        result.textContent = "⚠️ Server error. Try again later.";
+        result.className = "mt-4 text-red-400 text-sm italic";
+      }
+    });
+
+    // === Logout ===
+    document.getElementById("logoutBtn").addEventListener("click", logout);
+  </script>
+</body>
+</html>

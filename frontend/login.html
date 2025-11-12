@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Byte2Boss | Login</title>
+
+  <!-- Tailwind + Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #0c0c0c;
+      font-family: 'Inter', sans-serif;
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+  <div class="flex flex-col md:flex-row bg-[#141414] rounded-2xl shadow-lg overflow-hidden w-[90%] md:w-[70%] lg:w-[60%] min-h-[550px]">
+
+    <!-- Left Illustration -->
+    <div class="md:w-1/2 hidden md:flex items-center justify-center bg-black">
+      <img src="pictures/login(pic).png" alt="Login Illustration" class="w-full h-full object-cover" />
+    </div>
+
+    <!-- Right Panel -->
+    <div class="md:w-1/2 flex flex-col justify-center items-center p-10 bg-[#141414]">
+      <div class="w-full max-w-sm">
+        <h2 class="text-3xl font-bold text-center mb-8 text-orange-400">
+          Welcome Back!
+        </h2>
+
+        <!-- === LOGIN FORM === -->
+        <form id="loginForm" class="space-y-5">
+          <input
+            id="email"
+            type="email"
+            placeholder="Email"
+            class="w-full p-3 rounded-md bg-[#e6b389] text-black placeholder-gray-700"
+            required
+          />
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            class="w-full p-3 rounded-md bg-[#e6b389] text-black placeholder-gray-700"
+            required
+          />
+
+          <button
+            type="submit"
+            class="bg-orange-600 hover:bg-orange-500 w-full py-2 rounded-lg font-semibold transition"
+          >
+            Sign In
+          </button>
+        </form>
+
+        <!-- OR Divider -->
+        <div class="text-center text-gray-400 mt-6 mb-4">or</div>
+
+        <!-- === GOOGLE SIGN-IN === -->
+        <div
+          id="g_id_onload"
+          data-client_id="721632344113-skjb59t6l3mu6ne0pgc5g96ui3v6q09n.apps.googleusercontent.com"
+          data-context="signin"
+          data-ux_mode="popup"
+          data-callback="handleGoogleLogin"
+          data-auto_prompt="false"
+        ></div>
+
+        <div
+          class="g_id_signin"
+          data-type="standard"
+          data-shape="rectangular"
+          data-theme="outline"
+          data-text="sign_in_with"
+          data-size="large"
+          data-logo_alignment="left"
+        ></div>
+
+        <p class="text-center text-gray-400 mt-6 text-sm">
+          Don’t have an account?
+          <a href="signup.html" class="text-orange-400 hover:underline">Sign Up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google SDK -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <!-- Auth Helpers -->
+  <script src="js/auth.js"></script>
+
+  <script>
+    // === EMAIL LOGIN ===
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      try {
+        const res = await postJSON(ENDPOINTS.login, { email, password });
+        const data = await res.json();
+
+        if (res.ok) {
+          saveTokens({ access: data.access, refresh: data.refresh });
+
+  
+          localStorage.setItem("user", JSON.stringify({ name: data.name, email: data.email }));
+
+          alert("Login successful!");
+          window.location.href = "dashboard.html";
+        }
+        else {
+          alert(data.detail || "❌ Invalid credentials.");
+        }
+      } catch (err) {
+        console.error("Login Error:", err);
+        alert("⚠️ Server error. Try again later.");
+      }
+    });
+
+    // === GOOGLE LOGIN ===
+    async function handleGoogleLogin(response) {
+      try {
+        const id_token = response.credential;
+        const res = await fetch("http://127.0.0.1:8000/api/auth/google/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id_token }),
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          saveTokens({ access: data.access, refresh: data.refresh });
+          localStorage.setItem("user", JSON.stringify({ name: data.name, email: data.email }));
+          alert("Google login successful!");
+          window.location.href = "dashboard.html";
+        } else {
+          alert(data.detail || "Google sign-in failed.");
+        }
+      } catch (err) {
+        console.error("Google Sign-In Error:", err);
+        alert("⚠️ Google login failed. Please try again.");
+      }
+    }
+
+    saveTokens({ access: data.access, refresh: data.refresh });
+    saveUser({ name: data.name, email: data.email });
+
+  </script>
+</body>
+</html>
